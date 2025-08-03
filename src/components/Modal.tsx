@@ -21,7 +21,7 @@ export default function App() {
           سياسة الخصوصية
         </Button>
       </div>
-      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose}>
+      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
         <ModalContent className="bg-white dark:bg-gray-900 shadow-lg h-[700px]  mx-auto my-auto overflow-scroll">
           {(onClose) => (
             <>
