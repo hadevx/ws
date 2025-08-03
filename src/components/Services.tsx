@@ -53,7 +53,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-surface-muted">
+    <section id="services" className="py-20 bg-surface-muted mt-[-200px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

@@ -12,7 +12,7 @@ import { Globe } from "@/components/magicui/globe";
 import { HeroParallaxDemo } from "@/components/HeroParallaxDemo";
 import { SpotlightNewDemo } from "@/components/SpotlightNewDemo";
 import { TabsDemo } from "@/components/TabsDemo";
-
+import ModalDemo from "@/components/Modal";
 const Index = () => {
   return (
     <div className="min-h-screen">

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Heart } from "lucide-react";
 import { AuroraText } from "./magicui/aurora-text";
+import ModalDemo from "./Modal";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -36,8 +38,8 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="mb-6">
-                <span className="text-3xl font-bold text-brand-secondary">
-                  <AuroraText>webschema</AuroraText>
+                <span className="text-3xl font-bold text-transparent bg-clip-text  bg-gradient-to-r from-gray-200 to-gray-400 drop-shadow-[10px_10px_10px_black]">
+                  webschema
                 </span>
               </div>
               <p className="text-text-on-primary/80 mb-6 leading-relaxed">
@@ -47,14 +49,14 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="">
               <h3 className="text-lg font-semibold mb-6">روابط سريعة</h3>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <button
                       onClick={() => scrollToSection(link.href)}
-                      className="text-text-on-primary/80 hover:text-brand-secondary transition-colors duration-200">
+                      className="text-white/70 hover:text-white transition-colors duration-200">
                       {link.label}
                     </button>
                   </li>
@@ -70,7 +72,7 @@ const Footer = () => {
                   <li key={index}>
                     <button
                       onClick={() => scrollToSection(service.href)}
-                      className="text-text-on-primary/80 hover:text-brand-secondary transition-colors duration-200">
+                      className="text-white/70 hover:text-white transition-colors duration-200">
                       {service.label}
                     </button>
                   </li>
@@ -83,16 +85,16 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-6">تواصل معنا</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-brand-secondary flex-shrink-0" />
-                  <span className="text-text-on-primary/80">hello@webschema.com</span>
+                  <Mail className="h-5 w-5 text-white flex-shrink-0" />
+                  <span className="text-white/70 hover:text-white">hello@webschema.com</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-brand-secondary flex-shrink-0" />
-                  <span className="text-text-on-primary/80"> 98909936 (965+)</span>
+                  <Phone className="h-5 w-5 text-white flex-shrink-0" />
+                  <span className="text-white/70 hover:text-white"> 98909936 (965+)</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-brand-secondary flex-shrink-0" />
-                  <span className="text-text-on-primary/80">الكويت</span>
+                  <MapPin className="h-5 w-5 text-white flex-shrink-0" />
+                  <span className="text-white/70 hover:text-white">الكويت</span>
                 </div>
               </div>
 
@@ -115,10 +117,12 @@ const Footer = () => {
               <span>© {currentYear} webschema </span>
             </div>
             <div className="flex gap-6 text-sm text-text-on-primary/60">
-              <button className="hover:text-brand-secondary transition-colors">
-                سياسة الخصوصية
+              <button className="text-white/70 hover:text-white transition-colors">
+                <ModalDemo />
               </button>
-              <button className="hover:text-brand-secondary transition-colors">شروط الخدمة</button>
+              <button className="text-white/70 hover:text-white transition-colors">
+                شروط الخدمة
+              </button>
             </div>
           </div>
         </div>
