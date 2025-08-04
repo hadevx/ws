@@ -16,14 +16,15 @@ import ModalDemo from "@/components/Modal";
 import { Alert } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { Variants } from "motion/react";
-
+import Carousel from "../components/Carousel";
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
       <main>
         <Hero />
-        <HeroParallaxDemo />
+        <Carousel />
+        {/* <HeroParallaxDemo /> */}
         {/* <MarqueeDemo /> */}
         {/* <TabsDemo /> */}
         <Services />
