@@ -13,6 +13,10 @@ import { HeroParallaxDemo } from "@/components/HeroParallaxDemo";
 import { SpotlightNewDemo } from "@/components/SpotlightNewDemo";
 import { TabsDemo } from "@/components/TabsDemo";
 import ModalDemo from "@/components/Modal";
+import { Alert } from "flowbite-react";
+import { Button } from "flowbite-react";
+import { Variants } from "motion/react";
+
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -23,6 +27,7 @@ const Index = () => {
         {/* <MarqueeDemo /> */}
         {/* <TabsDemo /> */}
         <Services />
+
         {/* <Portfolio /> */}
         {/* <Team /> */}
         <Testimonials />
