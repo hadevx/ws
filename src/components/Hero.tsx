@@ -68,10 +68,10 @@ const Hero = () => {
           </div>
 
           {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* <div className="flex flex-wrap justify-center gap-4">
             <div className="flex items-center gap-2 bg-surface-muted border border-border rounded-full px-4 py-2">
               <Code className="h-4 w-4 " />
-              <AnimatedShinyText></AnimatedShinyText>
+
               <span className="text-text-secondary text-sm">
                 <AnimatedShinyText>تطوير مخصص</AnimatedShinyText>
               </span>
@@ -89,6 +89,32 @@ const Hero = () => {
               </span>
             </div>
           </div>
+ */}
+          {/* ------- */}
+          {/* Feature Pills */}
+          <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex items-center gap-2 bg-surface-muted border border-border rounded-full px-2 py-2">
+              <Code className="h-4 w-4 " />
+
+              <span className="text-text-secondary text-sm">
+                <AnimatedShinyText>تطوير مخصص</AnimatedShinyText>
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-surface-muted border border-border rounded-full px-2 py-2">
+              <Palette className="h-4 w-4 " />
+              <span className="text-text-secondary text-sm">
+                <AnimatedShinyText>تصميم عصري</AnimatedShinyText>
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-surface-muted border border-border rounded-full px-2 py-2">
+              <Zap className="h-4 w-4 " />
+              <span className="text-text-secondary text-sm">
+                <AnimatedShinyText>تسليم سريع</AnimatedShinyText>
+              </span>
+            </div>
+          </div>
+
+          {/* ------- */}
         </div>
       </div>
     </section>
