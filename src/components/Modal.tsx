@@ -22,7 +22,7 @@ export default function Example({ children, title, body }) {
               transition
               className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95">
               <div
-                className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 max-h-[70vh] overflow-y-auto"
+                className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 max-h-[50vh] lg:max-h-[70vh] overflow-y-auto"
                 dir="rtl">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-right sm:ml-4 sm:mt-0 sm:text-right w-full">
