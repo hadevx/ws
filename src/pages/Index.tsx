@@ -17,6 +17,7 @@ import { Alert } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { Variants } from "motion/react";
 import Carousel from "../components/Carousel";
+import { BackgroundGradientAnimationDemo } from "../components/BackgroundGradientAnimationDemo";
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -24,6 +25,7 @@ const Index = () => {
       <main>
         <Hero />
         <Carousel />
+        {/* <BackgroundGradientAnimationDemo /> */}
         {/* <HeroParallaxDemo /> */}
         {/* <MarqueeDemo /> */}
         {/* <TabsDemo /> */}

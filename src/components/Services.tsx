@@ -3,48 +3,6 @@ import { Button } from "@/components/ui/button";
 import { User, ShoppingCart, Building, ArrowRight, Check } from "lucide-react";
 import { TabsDemo } from "./TabsDemo";
 const Services = () => {
-  const services = [
-    {
-      icon: User,
-      title: "المواقع الشخصية",
-      description: "مواقع ومحافظ شخصية مذهلة تعرض قصتك الفريدة وإنجازاتك المهنية.",
-      features: [
-        "تصميم متجاوب مخصص",
-        "معارض الأعمال",
-        "نماذج التواصل",
-        "تحسين محركات البحث",
-        "تكامل وسائل التواصل الاجتماعي",
-      ],
-      price: "يبدأ من 1,200 دولار",
-    },
-    {
-      icon: ShoppingCart,
-      title: "حلول التجارة الإلكترونية",
-      description: "متاجر إلكترونية قوية مع تجارب تسوق سلسة تحول الزوار إلى عملاء.",
-      features: [
-        "إدارة كتالوج المنتجات",
-        "معالجة دفع آمنة",
-        "تتبع المخزون",
-        "إدارة الطلبات",
-        "لوحة التحليلات",
-      ],
-      price: "يبدأ من 3,500 دولار",
-    },
-    {
-      icon: Building,
-      title: "مواقع الشركات",
-      description: "مواقع شركات مهنية تؤسس المصداقية وتدفع نمو الأعمال.",
-      features: [
-        "هوية مهنية",
-        "عرض الخدمات",
-        "نماذج توليد العملاء المحتملين",
-        "إدارة المحتوى",
-        "تحسين الأداء",
-      ],
-      price: "يبدأ من 2,200 دولار",
-    },
-  ];
-
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -53,7 +11,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-surface-muted mt-[-200px]">
+    <section id="services" className="py-20 bg-surface-muted ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
