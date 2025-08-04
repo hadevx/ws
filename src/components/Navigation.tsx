@@ -72,7 +72,7 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
+                  className="block  w-full text-left px-3 py-2 text-text-secondary hover:text-text-primary transition-colors duration-200">
                   {item.label}
                 </button>
               ))}
