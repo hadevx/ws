@@ -18,6 +18,11 @@ import { Button } from "flowbite-react";
 import { Variants } from "motion/react";
 import Carousel from "../components/Carousel";
 import { BackgroundGradientAnimationDemo } from "../components/BackgroundGradientAnimationDemo";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/magicui/scroll-based-velocity";
+
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -34,6 +39,7 @@ const Index = () => {
         {/* <Portfolio /> */}
         {/* <Team /> */}
         <Testimonials />
+
         <Contact />
       </main>
       <Footer />

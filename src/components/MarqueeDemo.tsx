@@ -37,6 +37,7 @@ const reviews = [
         <Star fill="currentColor" />
         <Star fill="currentColor" />
         <Star fill="currentColor" />
+        <Star />
       </div>
     ),
     username: "@john",

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-
+import { SparklesText } from "@/components/magicui/sparkles-text";
+import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("#home");
@@ -48,25 +49,31 @@ const Navigation = () => {
       });
     };
   }, []);
+  const confettiRef = useRef<ConfettiRef>(null);
+  useEffect(() => {
+    // Trigger confetti when component mounts
+    confettiRef.current?.fire({});
+  }, []);
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <div className="fixed top-0 left-0 right-0 z-0">
         {/* 🔥 Offer Banner */}
         <div className="bg-gradient-to-r from-pink-500 to-rose-600 text-white text-center py-2 px-4 font-bold text-sm md:text-base shadow-md ">
-          🎉 عرض محدود متجر إلكتروني فقط بـ <span className=""> 100 دك</span> 🎉
+          🎉 عرض لفتره محدوده متجر إلكتروني بـ <span className=""> 100 دك </span>فقط
         </div>
+        <Confetti ref={confettiRef} className="absolute left-0 top-0 z-0 size-full" />
 
         {/* Navbar */}
-        <nav className="bg-background/80 backdrop-blur-md border-b border-border">
+        <nav className="bg-background/80 backdrop-blur-md border-b border-border z-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <span
-                  className="text-2xl font-bold text-brand-primary cursor-pointer"
+                  className="text-lg font-bold text-brand-primary cursor-pointer"
                   onClick={() => scrollToSection("#home")}>
-                  webschema
+                  <SparklesText className="text-2xl">WebSchema</SparklesText>
                 </span>
               </div>
 

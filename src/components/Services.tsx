@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { User, ShoppingCart, Building, ArrowRight, Check } from "lucide-react";
 import { TabsDemo } from "./TabsDemo";
+import { TextReveal } from "@/components/magicui/text-reveal";
 const Services = () => {
   const scrollToContact = () => {
     const element = document.querySelector("#contact");

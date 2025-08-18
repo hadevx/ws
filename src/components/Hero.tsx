@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { TextReveal } from "@/components/magicui/text-reveal";
+import { ConfettiButton } from "@/components/magicui/confetti";
+import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
+import { useRef, useEffect } from "react";
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -13,13 +16,18 @@ const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const confettiRef = useRef<ConfettiRef>(null);
+  useEffect(() => {
+    // Trigger confetti when component mounts
+    confettiRef.current?.fire({});
+  }, []);
 
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center bg-background pt-16">
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center ">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
 
@@ -49,15 +57,13 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button
-              variant="default"
-              size="lg"
-              onClick={() => scrollToSection("#contact")}
-              className="px-8 py-3 text-lg font-semibold">
-              ابدأ مشروعك
-              <ArrowRight className="mr-2 h-5 w-5 rotate-180" />
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 ">
+            <ConfettiButton>
+              <Button onClick={() => scrollToSection("#contact")}>
+                ابدأ مشروعك
+                <ArrowRight className="mr-2 h-5 w-5 rotate-180" />
+              </Button>
+            </ConfettiButton>
             <Button
               variant="outline"
               size="lg"
@@ -66,7 +72,7 @@ const Hero = () => {
               اطلع على أعمالنا
             </Button>
           </div>
-
+          {/* <Confetti ref={confettiRef} className="absolute left-0 top-0 z-0 size-full" /> */}
           {/* Feature Pills */}
           {/* <div className="flex flex-wrap justify-center gap-4">
             <div className="flex items-center gap-2 bg-surface-muted border border-border rounded-full px-4 py-2">

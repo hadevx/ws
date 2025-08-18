@@ -2,6 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { MarqueeDemo } from "./MarqueeDemo";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/magicui/scroll-based-velocity";
 
 const Testimonials = () => {
   return (
