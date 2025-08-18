@@ -88,16 +88,6 @@ export default Example;
 
 const cards = [
   {
-    url: "/blog.png",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "/ecomm.png",
-    title: "Title 2",
-    id: 2,
-  },
-  {
     url: "/folio.jpeg",
     title: "Title 3",
     id: 3,
@@ -106,6 +96,16 @@ const cards = [
     url: "/image.png",
     title: "Title 4",
     id: 4,
+  },
+  {
+    url: "/terra.png",
+    title: "Title 1",
+    id: 1,
+  },
+  {
+    url: "/admin.png",
+    title: "Title 2",
+    id: 2,
   },
   {
     url: "/Products.png",

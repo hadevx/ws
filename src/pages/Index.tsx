@@ -7,7 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { MarqueeDemo } from "@/components/MarqueeDemo";
-import { GlobeDemo } from "@/components/GlobeDemo";
+// import { GlobeDemo } from "@/components/GlobeDemo";
 import { Globe } from "@/components/magicui/globe";
 import { HeroParallaxDemo } from "@/components/HeroParallaxDemo";
 import { SpotlightNewDemo } from "@/components/SpotlightNewDemo";

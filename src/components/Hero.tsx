@@ -31,7 +31,7 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl !leading-[50px] lg:!leading-[80px]  sm:text-5xl lg:text-6xl font-black text-text-primary mb-6">
+          <h1 className="text-3xl !leading-[50px] sm:!leading-[70px] lg:!leading-[80px]  sm:text-5xl lg:text-6xl font-black text-text-primary mb-6">
             نحن نبني مواقع{" "}
             <span className=" ">
               <AuroraText>استثنائية</AuroraText>

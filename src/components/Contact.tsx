@@ -53,11 +53,11 @@ const Contact = () => {
 
  البريد: ${formData.email}
 
- الشركة: ${formData.company || "-"}
+
 
  نوع المشروع: ${formData.projectType || "-"}
 
- الميزانية: ${formData.budget || "-"}
+
 
  المدة: ${formData.timeline || "-"}
  
@@ -76,7 +76,7 @@ ${formData.message}
     {
       icon: Mail,
       title: "البريد الإلكتروني",
-      content: "hello@webschema.com",
+      content: "service.webschema@gmail.com",
       description: "راسلنا في أي وقت",
       clickable: true,
     },
@@ -97,7 +97,7 @@ ${formData.message}
     {
       icon: Clock,
       title: "وقت الاستجابة",
-      content: "< 24 ساعة",
+      content: "> 24 ساعة",
       description: "نرد بسرعة",
       clickable: false,
     },
@@ -105,7 +105,7 @@ ${formData.message}
 
   return (
     <section id="contact" className="py-20 bg-surface-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
@@ -143,8 +143,8 @@ ${formData.message}
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="border border-border">
+          <div className="lg:col-span-2 ">
+            <Card className="border border-border h-full">
               <CardHeader>
                 <CardTitle className="text-2xl text-text-primary">
                   احصل على عرض سعرك المجاني
@@ -180,7 +180,7 @@ ${formData.message}
                     </div>
                   </div>
 
-                  <div className="space-y-2">
+                  {/*     <div className="space-y-2">
                     <Label htmlFor="company">الشركة/المؤسسة</Label>
                     <Input
                       id="company"
@@ -189,7 +189,7 @@ ${formData.message}
                       onChange={(e) => handleInputChange("company", e.target.value)}
                       placeholder="اسم شركتك"
                     />
-                  </div>
+                  </div> */}
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -199,43 +199,29 @@ ${formData.message}
                           <SelectValue placeholder="اختر نوع المشروع" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="personal">موقع شخصي</SelectItem>
                           <SelectItem value="ecommerce">متجر إلكتروني</SelectItem>
+                          <SelectItem value="personal">موقع شخصي</SelectItem>
                           <SelectItem value="business">موقع شركة</SelectItem>
                           <SelectItem value="custom">حل مخصص</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="budget">نطاق الميزانية</Label>
-                      <Select onValueChange={(value) => handleInputChange("budget", value)}>
+                      <Label htmlFor="timeline">الجدول الزمني للمشروع</Label>
+                      <Select onValueChange={(value) => handleInputChange("timeline", value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="اختر نطاق الميزانية" />
+                          <SelectValue placeholder="اختر الجدول الزمني" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1000-2500">1,000 - 2,500 دولار</SelectItem>
-                          <SelectItem value="2500-5000">2,500 - 5,000 دولار</SelectItem>
-                          <SelectItem value="5000-10000">5,000 - 10,000 دولار</SelectItem>
-                          <SelectItem value="10000+">10,000+ دولار</SelectItem>
+                          <SelectItem value="asap">في أسرع وقت ممكن</SelectItem>
+                          <SelectItem value="1-2weeks">1-2 أسبوع</SelectItem>
+                          <SelectItem value="1month">شهر واحد</SelectItem>
+                          <SelectItem value="2-3months">2-3 أشهر</SelectItem>
+                          <SelectItem value="flexible">مرن</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="timeline">الجدول الزمني للمشروع</Label>
-                    <Select onValueChange={(value) => handleInputChange("timeline", value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="اختر الجدول الزمني" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="asap">في أسرع وقت ممكن</SelectItem>
-                        <SelectItem value="1-2weeks">1-2 أسبوع</SelectItem>
-                        <SelectItem value="1month">شهر واحد</SelectItem>
-                        <SelectItem value="2-3months">2-3 أشهر</SelectItem>
-                        <SelectItem value="flexible">مرن</SelectItem>
-                      </SelectContent>
-                    </Select>
                   </div>
 
                   <div className="space-y-2">
@@ -250,7 +236,7 @@ ${formData.message}
                     />
                   </div>
 
-                  <Button type="submit" variant="default" className="w-full" size="lg">
+                  <Button type="submit" variant="default" className="w-full " size="lg">
                     <Send className="ml-2 h-5 w-5" />
                     إرسال الرسالة والحصول على عرض سعر
                   </Button>
