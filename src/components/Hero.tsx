@@ -58,12 +58,11 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 ">
-            <ConfettiButton>
-              <Button onClick={() => scrollToSection("#contact")}>
-                ابدأ مشروعك
-                <ArrowRight className="mr-2 h-5 w-5 rotate-180" />
-              </Button>
-            </ConfettiButton>
+            <Button onClick={() => scrollToSection("#contact")} className="px-8 py-3 text-lg">
+              ابدأ مشروعك
+              <ArrowRight className="mr-2 h-5 w-5 rotate-180" />
+            </Button>
+
             <Button
               variant="outline"
               size="lg"

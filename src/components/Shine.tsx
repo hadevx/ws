@@ -11,8 +11,8 @@ const Shine = ({ children }: { children: React.ReactNode }) => {
           "linear-gradient(90deg, #FFBE7B, #A07CFE, #FE8FB5)",
         ],
       }}
-      transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }}>
-      <div className="bg-background rounded-2xl p-6">{children}</div>
+      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}>
+      <div className="bg-background rounded-2xl lg:p-5">{children}</div>
     </motion.div>
   );
 };

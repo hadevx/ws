@@ -51,13 +51,15 @@ const Navigation = () => {
   }, []);
   const confettiRef = useRef<ConfettiRef>(null);
   useEffect(() => {
-    // Trigger confetti when component mounts
-    confettiRef.current?.fire({});
+    const interval = setInterval(() => {
+      confettiRef.current?.fire({});
+    }, 10000);
+    return () => clearInterval(interval); // cleanup on unmount
   }, []);
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-0">
+      <div className="fixed top-0 left-0 right-0 z-50">
         {/* 🔥 Offer Banner */}
         <div className="bg-gradient-to-r from-pink-500 to-rose-600 text-white text-center py-2 px-4 font-bold text-sm md:text-base shadow-md ">
           🎉 عرض لفتره محدوده متجر إلكتروني بـ <span className=""> 100 دك </span>فقط
@@ -73,7 +75,7 @@ const Navigation = () => {
                 <span
                   className="text-lg font-bold text-brand-primary cursor-pointer"
                   onClick={() => scrollToSection("#home")}>
-                  <SparklesText className="text-2xl">WebSchema</SparklesText>
+                  <p className="text-2xl">WebSchema</p>
                 </span>
               </div>
 
