@@ -13,8 +13,7 @@ import { HeroParallaxDemo } from "@/components/HeroParallaxDemo";
 import { SpotlightNewDemo } from "@/components/SpotlightNewDemo";
 import { TabsDemo } from "@/components/TabsDemo";
 import ModalDemo from "@/components/Modal";
-import { Alert } from "flowbite-react";
-import { Button } from "flowbite-react";
+import { Alert, Button } from "flowbite-react";
 import { Variants } from "motion/react";
 import Carousel from "../components/Carousel";
 import { BackgroundGradientAnimationDemo } from "../components/BackgroundGradientAnimationDemo";
@@ -22,28 +21,49 @@ import {
   ScrollVelocityContainer,
   ScrollVelocityRow,
 } from "@/components/magicui/scroll-based-velocity";
+import Bento from "@/components/Bento";
+import { useEffect, useState } from "react";
+import Preloader from "@/components/Preloader"; // ✅ Import your preloader
 
 const Index = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading (e.g., fetching data or waiting for assets)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3s
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <main>
-        <Hero />
-        <Carousel />
-        {/* <BackgroundGradientAnimationDemo /> */}
-        {/* <HeroParallaxDemo /> */}
-        {/* <MarqueeDemo /> */}
-        {/* <TabsDemo /> */}
-        <Services />
+    <>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div className="min-h-screen">
+          <Navigation />
+          <main>
+            <Hero />
+            {/* <Bento /> */}
+            <Carousel />
+            {/* <BackgroundGradientAnimationDemo /> */}
+            {/* <HeroParallaxDemo /> */}
+            {/* <MarqueeDemo /> */}
+            {/* <TabsDemo /> */}
+            <Services />
 
-        {/* <Portfolio /> */}
-        {/* <Team /> */}
-        <Testimonials />
+            {/* <Portfolio /> */}
+            {/* <Team /> */}
+            <Testimonials />
 
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
