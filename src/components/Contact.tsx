@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-import { ShineBorder } from "@/components/magicui/shine-border";
+// import { ShineBorder } from "@/components/magicui/shine-border";
 import Shine from "./Shine";
-import { TextReveal } from "@/components/magicui/text-reveal";
+// import { TextReveal } from "@/components/magicui/text-reveal";
 
 const Contact = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { SparklesText } from "@/components/magicui/sparkles-text";
+// import { SparklesText } from "@/components/magicui/sparkles-text";
 import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

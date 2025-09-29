@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Palette, Zap } from "lucide-react";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
-import { TextReveal } from "@/components/magicui/text-reveal";
-import { ConfettiButton } from "@/components/magicui/confetti";
-import { Confetti, type ConfettiRef } from "@/components/magicui/confetti";
+// import { TextReveal } from "@/components/magicui/text-reveal";
+// import { ConfettiButton } from "@/components/magicui/confetti";
+import { type ConfettiRef } from "@/components/magicui/confetti";
 import { useRef, useEffect } from "react";
 
 const Hero = () => {

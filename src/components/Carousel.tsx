@@ -1,6 +1,6 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { BackgroundGradientAnimation } from "./background-gradient-animation";
+
 const Example = () => {
   return (
     <div className="">

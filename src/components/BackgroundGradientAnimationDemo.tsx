@@ -1,4 +1,3 @@
-import React from "react";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 
 export function BackgroundGradientAnimationDemo() {
