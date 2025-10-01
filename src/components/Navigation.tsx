@@ -61,9 +61,9 @@ const Navigation = () => {
     <>
       <div className="fixed top-0 left-0 right-0 z-50">
         {/* 🔥 Offer Banner */}
-        <div className="bg-gradient-to-r from-pink-500 to-rose-600 text-white text-center py-2 px-4 font-bold text-sm md:text-base shadow-md ">
+        {/*   <div className="bg-gradient-to-r from-pink-500 to-rose-600 text-white text-center py-2 px-4 font-bold text-sm md:text-base shadow-md ">
           عرض لفتره محدوده متجر إلكتروني بـ <span className=""> 80 دك </span>فقط
-        </div>
+        </div> */}
         <Confetti ref={confettiRef} className="absolute left-0 top-0 z-0 size-full" />
 
         {/* Navbar */}
