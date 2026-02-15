@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
  * - Framer Motion required
  */
 
-const EXT = "png"; // change to "webp" or "jpg" if your files use another extension
+const EXT = "jpg"; // change to "webp" or "jpg" if your files use another extension
 
 const WorksGallery = () => {
   const works = useMemo(
@@ -127,13 +127,6 @@ const WorksGallery = () => {
                   );
                 })}
               </div>
-
-              <p className="mt-4 text-xs text-white/55">
-                ملاحظة: تأكد أن الصور موجودة في <span className="text-white/80">/public</span>{" "}
-                ومسمّاة من <span className="text-white/80">1</span> إلى{" "}
-                <span className="text-white/80">8</span> بنفس الامتداد:{" "}
-                <span className="text-white/80">{EXT}</span>.
-              </p>
             </div>
           </div>
         </div>
