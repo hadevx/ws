@@ -46,16 +46,11 @@ const Index = () => {
           <Navigation />
           <main>
             <Hero />
-            {/* <Bento /> */}
+
             <Carousel />
-            {/* <BackgroundGradientAnimationDemo /> */}
-            {/* <HeroParallaxDemo /> */}
-            {/* <MarqueeDemo /> */}
-            {/* <TabsDemo /> */}
+
             <Services />
 
-            {/* <Portfolio /> */}
-            {/* <Team /> */}
             <Testimonials />
 
             <Contact />

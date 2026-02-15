@@ -79,7 +79,7 @@ ${formData.message}
     {
       icon: Mail,
       title: "البريد الإلكتروني",
-      content: "service.webschema@gmail.com",
+      content: "webschema@outlook.com",
       description: "راسلنا في أي وقت",
       clickable: true,
     },

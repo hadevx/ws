@@ -9,7 +9,7 @@ export function TabsDemo() {
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>متجر الكتروني</p>
           <img
-            src="/Products.png"
+            src="/2.png"
             alt="dummy image"
             width="1000"
             height="1000"
@@ -73,7 +73,7 @@ export function TabsDemo() {
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>خدمات الكترونيه</p>
           <img
-            src="/services.png"
+            src="/8.png"
             alt="dummy image"
             width="1000"
             height="1000"

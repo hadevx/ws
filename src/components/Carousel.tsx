@@ -1,125 +1,145 @@
-import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Example = () => {
-  return (
-    <div className="">
-      <HorizontalScrollCarousel />
-    </div>
+/**
+ * WorksGallery (Websites Showcase)
+ * - Images must be in /public and named: 1.png ... 8.png (or change EXT below)
+ * - TailwindCSS required
+ * - Framer Motion required
+ */
+
+const EXT = "png"; // change to "webp" or "jpg" if your files use another extension
+
+const WorksGallery = () => {
+  const works = useMemo(
+    () =>
+      Array.from({ length: 8 }, (_, i) => {
+        const id = i + 1;
+        return {
+          id,
+          title: `Website ${id}`,
+          src: `/${id}.${EXT}`,
+        };
+      }),
+    [],
   );
-};
 
-const HorizontalScrollCarousel = () => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-  const [scrollRange, setScrollRange] = useState(["90%", "-5%"]);
-
-  useEffect(() => {
-    const updateRange = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        // Mobile
-        setScrollRange(["86%", "-5%"]);
-      } else if (width < 1024) {
-        // Tablet
-        setScrollRange(["80%", "-15%"]);
-      } else {
-        // Desktop
-        setScrollRange(["42%", "-20%"]);
-      }
-    };
-
-    updateRange(); // Initial call
-    window.addEventListener("resize", updateRange); // Recalculate on resize
-
-    return () => window.removeEventListener("resize", updateRange);
-  }, []);
-
-  const x = useTransform(scrollYProgress, [0, 1], scrollRange);
+  const [active, setActive] = useState(works[0]);
 
   return (
-    <>
-      <section id="portfolio" className="py-20  bg-gray-900 ">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">أعمالنا</h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              هذه قائمه بأهم الاعمال التي قمنا بها خلال الفتره الماضيه وتتضمن متاجر الكترونيه و
-              مواقع شخصيه
-            </p>
-          </div>
+    <section id="works" className="bg-gray-900 text-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold">أعمالنا</h2>
+          <p className="mt-3 text-white/75 max-w-2xl mx-auto">
+            مجموعة من مواقع الويب التي قمنا بتصميمها وتطويرها. اضغط على أي صورة لعرضها بحجم أكبر.
+          </p>
         </div>
 
-        <section ref={targetRef} className="relative mt-[-100px] lg:mt-[-200px]  h-[300vh] ">
-          <div className="sticky  top-0 flex h-screen items-center overflow-hidden">
-            <motion.div style={{ x }} className="flex  gap-4">
-              {cards.map((card) => {
-                return <Card card={card} key={card.id} />;
-              })}
-            </motion.div>
+        {/* Featured Preview */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <div className="lg:col-span-8">
+            <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 shadow-xl">
+              <div className="aspect-[16/10] w-full">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={active.id}
+                    src={active.src}
+                    alt={active.title}
+                    className="h-full w-full object-contain bg-black/20"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.25 }}
+                    draggable={false}
+                    loading="lazy"
+                  />
+                </AnimatePresence>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-4 border-t border-white/10">
+                <div className="min-w-0">
+                  <p className="text-sm text-white/70">المشروع المختار</p>
+                  <p className="font-semibold truncate">{active.title}</p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      const idx = works.findIndex((w) => w.id === active.id);
+                      setActive(works[(idx - 1 + works.length) % works.length]);
+                    }}
+                    className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition"
+                    aria-label="Previous">
+                    السابق
+                  </button>
+                  <button
+                    onClick={() => {
+                      const idx = works.findIndex((w) => w.id === active.id);
+                      setActive(works[(idx + 1) % works.length]);
+                    }}
+                    className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition"
+                    aria-label="Next">
+                    التالي
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      </section>
-    </>
+
+          {/* Thumbnails */}
+          <div className="lg:col-span-4">
+            <div className="rounded-3xl bg-white/5 border border-white/10 p-4 sm:p-5">
+              <p className="text-sm text-white/70 mb-4">كل الأعمال</p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-3">
+                {works.map((w) => {
+                  const isActive = w.id === active.id;
+                  return (
+                    <button
+                      key={w.id}
+                      onClick={() => setActive(w)}
+                      className={[
+                        "group relative overflow-hidden rounded-2xl border transition",
+                        isActive
+                          ? "border-white/40 ring-2 ring-white/20"
+                          : "border-white/10 hover:border-white/25",
+                      ].join(" ")}
+                      aria-label={`Open ${w.title}`}
+                      type="button">
+                      <div className="aspect-[16/11] bg-black/20">
+                        <img
+                          src={w.src}
+                          alt={w.title}
+                          className="h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                          draggable={false}
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <div className="absolute inset-x-0 bottom-0 p-2">
+                        <div className="rounded-xl bg-black/50 backdrop-blur px-2 py-1 border border-white/10">
+                          <p className="text-xs font-medium truncate">{w.title}</p>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <p className="mt-4 text-xs text-white/55">
+                ملاحظة: تأكد أن الصور موجودة في <span className="text-white/80">/public</span>{" "}
+                ومسمّاة من <span className="text-white/80">1</span> إلى{" "}
+                <span className="text-white/80">8</span> بنفس الامتداد:{" "}
+                <span className="text-white/80">{EXT}</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
-const Card = ({ card }) => {
-  return (
-    <div
-      key={card.id}
-      className="group  relative h-[450px] w-[450px] overflow-hidden bg-neutral-200">
-      <div
-        style={{
-          backgroundImage: `url(${card.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="absolute   inset-0 z-0 transition-transform duration-300 group-hover:scale-110"></div>
-      <div className="absolute inset-0 z-10 grid place-content-center"></div>
-    </div>
-  );
-};
-
-export default Example;
-
-const cards = [
-  {
-    url: "/folio.jpeg",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "/image.png",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "/terra.png",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "/admin.png",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "/Products.png",
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: "/services.png",
-    title: "Title 6",
-    id: 6,
-  },
-  {
-    url: "/ecomm.webp",
-    title: "Title 7",
-    id: 7,
-  },
-];
+export default WorksGallery;
