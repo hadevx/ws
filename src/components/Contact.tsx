@@ -13,9 +13,37 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-// import { ShineBorder } from "@/components/magicui/shine-border";
 import Shine from "./Shine";
-// import { TextReveal } from "@/components/magicui/text-reveal";
+import { motion } from "motion/react";
+
+const ease = [0.32, 0.72, 0, 1] as const;
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: "البريد الإلكتروني",
+    content: "webschema@outlook.com",
+    description: "راسلنا في أي وقت",
+  },
+  {
+    icon: Phone,
+    title: "الهاتف",
+    content: "98909936",
+    description: "متواجدون طوال أيام الاسبوع",
+  },
+  {
+    icon: MapPin,
+    title: "الموقع",
+    content: "مدينة الكويت",
+    description: "فريق يعمل عن بعد",
+  },
+  {
+    icon: Clock,
+    title: "وقت الاستجابة",
+    content: "> 24 ساعة",
+    description: "نرد بسرعة",
+  },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,15 +58,11 @@ const Contact = () => {
   const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "يرجى ملء الحقول المطلوبة",
@@ -47,112 +71,72 @@ const Contact = () => {
       });
       return;
     }
-
-    // Construct message
-    const msg = `
- طلب جديد من ${formData.name}:
-
- الاسم: ${formData.name}
-
- البريد: ${formData.email}
-
-
-
- نوع المشروع: ${formData.projectType || "-"}
-
-
-
- المدة: ${formData.timeline || "-"}
- 
- التفاصيل:
-${formData.message}
-`;
-
-    const phone = "96598909936"; // Your WhatsApp number (no +, no spaces)
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
-    // Open WhatsApp
-    window.open(url, "_blank");
+    const msg = `طلب جديد من ${formData.name}:\n\nالاسم: ${formData.name}\nالبريد: ${formData.email}\nنوع المشروع: ${formData.projectType || "-"}\nالمدة: ${formData.timeline || "-"}\n\nالتفاصيل:\n${formData.message}`;
+    window.open(`https://wa.me/96598909936?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "البريد الإلكتروني",
-      content: "webschema@outlook.com",
-      description: "راسلنا في أي وقت",
-      clickable: true,
-    },
-    {
-      icon: Phone,
-      title: "الهاتف",
-      content: "98909936",
-      description: "متواجدون طوال أيام الاسبوع",
-      clickable: true,
-    },
-    {
-      icon: MapPin,
-      title: "الموقع",
-      content: "مدينة الكويت",
-      description: "فريق يعمل عن بعد",
-      clickable: false,
-    },
-    {
-      icon: Clock,
-      title: "وقت الاستجابة",
-      content: "> 24 ساعة",
-      description: "نرد بسرعة",
-      clickable: false,
-    },
-  ];
-
   return (
-    <section id="contact" className="py-20 bg-surface-muted">
-      {/*  <TextReveal>
-        هل تريد موقعًا يجذب الانتباه ويعكس هوية علامتك بقوّة؟ أنت في المكان المناسب دعنا نساعدك في
-        تحديد الموقع المناسب لك
-      </TextReveal> */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
-        {/* Section Header */}
-        <div className="text-center mb-16">
+    <section id="contact" className="py-24 bg-surface-muted">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease }}>
+          <p className="text-xs font-semibold tracking-[0.2em] text-text-secondary uppercase mb-3">
+            تواصل معنا
+          </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
             دعنا{" "}
-            <span className="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
               نعمل معاً
             </span>
           </h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             مستعد لبدء مشروعك؟ تواصل معنا ودعنا نناقش كيف يمكننا تحويل رؤيتك إلى حقيقة.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Info */}
-          <div className="lg:col-span-1">
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="border border-border">
-                  <CardContent className="p-6">
+          {/* Info cards */}
+          <div className="lg:col-span-1 space-y-4">
+            {contactInfo.map((info, i) => (
+              <motion.div
+                key={info.title}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease }}>
+                <Card className="border border-border">
+                  <CardContent className="p-5">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-r  from-gray-900 to-gray-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <info.icon className="h-6 w-6 text-text-on-primary" />
+                      <div className="w-11 h-11 bg-gradient-to-br from-gray-900 to-gray-700 dark:from-gray-700 dark:to-gray-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <info.icon className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-text-primary mb-1">{info.title}</h3>
-                        <p className="text-brand-primary font-medium mb-1">{info.content}</p>
-                        <p className="text-sm text-text-secondary">{info.description}</p>
+                        <h3 className="font-semibold text-text-primary mb-0.5 text-sm">{info.title}</h3>
+                        <p className="text-brand-primary font-medium text-sm mb-0.5">{info.content}</p>
+                        <p className="text-xs text-text-secondary">{info.description}</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2 ">
+          {/* Form */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, delay: 0.15, ease }}>
             <Shine>
-              <Card className="border border-border h-full relative overflow-hidden   w-full">
+              <Card className="border border-border h-full relative overflow-hidden w-full">
                 <CardHeader>
                   <CardTitle className="text-2xl text-text-primary">
                     احصل على عرض سعرك المجاني
@@ -162,7 +146,7 @@ ${formData.message}
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">الاسم *</Label>
@@ -190,8 +174,8 @@ ${formData.message}
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="projectType">نوع المشروع</Label>
-                        <Select onValueChange={(value) => handleInputChange("projectType", value)}>
+                        <Label>نوع المشروع</Label>
+                        <Select onValueChange={(v) => handleInputChange("projectType", v)}>
                           <SelectTrigger>
                             <SelectValue placeholder="اختر نوع المشروع" />
                           </SelectTrigger>
@@ -203,10 +187,9 @@ ${formData.message}
                           </SelectContent>
                         </Select>
                       </div>
-
                       <div className="space-y-2">
-                        <Label htmlFor="timeline">الجدول الزمني للمشروع</Label>
-                        <Select onValueChange={(value) => handleInputChange("timeline", value)}>
+                        <Label>الجدول الزمني</Label>
+                        <Select onValueChange={(v) => handleInputChange("timeline", v)}>
                           <SelectTrigger>
                             <SelectValue placeholder="اختر الجدول الزمني" />
                           </SelectTrigger>
@@ -233,7 +216,7 @@ ${formData.message}
                       />
                     </div>
 
-                    <Button type="submit" variant="default" className="w-full " size="lg">
+                    <Button type="submit" variant="default" className="w-full" size="lg">
                       <Send className="ml-2 h-5 w-5" />
                       إرسال الرسالة والحصول على عرض سعر
                     </Button>
@@ -241,7 +224,7 @@ ${formData.message}
                 </CardContent>
               </Card>
             </Shine>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

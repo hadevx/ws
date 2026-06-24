@@ -120,7 +120,7 @@ const ReviewCard = ({
         <div className="flex flex-col">
           {/*    <figcaption className="text-sm lg:text-lg font-medium dark:text-white">{name}</figcaption>
           <p className="text-sm font-medium dark:text-white/40">{username}</p> */}
-          <p className="text-black">{name}</p>
+          <p className="text-text-primary">{name}</p>
         </div>
       </div>
       <blockquote className="mt-2 text-sm lg:text-xl">{body}</blockquote>

@@ -1,132 +1,182 @@
-import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin } from "lucide-react";
-
+import { ArrowLeft, Mail, Phone, MapPin, Instagram, Twitter, MessageCircle } from "lucide-react";
+import { motion } from "motion/react";
 import Modal from "./Modal";
 
+const ease = [0.32, 0.72, 0, 1] as const;
+
+const quickLinks = [
+  { label: "الرئيسية", href: "#home" },
+  { label: "خدماتنا", href: "#services" },
+  { label: "أعمالنا", href: "#portfolio" },
+  { label: "آراء العملاء", href: "#testimonials" },
+  { label: "تواصل معنا", href: "#contact" },
+];
+
+const services = [
+  { label: "متجر إلكتروني" },
+  { label: "موقع شخصي" },
+  { label: "موقع شركة" },
+  { label: "مدونة" },
+  { label: "تطوير مخصص" },
+];
+
+const socials = [
+  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Twitter, label: "Twitter", href: "#" },
+  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/96598909936" },
+];
+
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const quickLinks = [
-    { label: "الرئيسية", href: "#home" },
-    { label: "خدماتنا", href: "#services" },
-    { label: "أعمالنا", href: "#portfolio" },
-    { label: "فريقنا", href: "#team" },
-    { label: "آراء العملاء", href: "#testimonials" },
-    { label: "تواصل معنا", href: "#contact" },
-  ];
-
-  const services = [
-    { label: "المواقع الشخصية", href: "#services" },
-    { label: "حلول التجارة الإلكترونية", href: "#services" },
-    { label: "مواقع الشركات", href: "#services" },
-    { label: "التطوير المخصص", href: "#services" },
-  ];
+  const scroll = (href: string) =>
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="bg-text-primary text-text-on-primary">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-1">
-              <div className="mb-6">
-                <span className="text-3xl font-bold text-transparent bg-clip-text  bg-gradient-to-r from-gray-200 to-gray-400 drop-shadow-[10px_10px_10px_black]">
-                  webschema
-                </span>
-              </div>
-              <p className="text-text-on-primary/80 mb-6 leading-relaxed">
-                نبني مواقع استثنائية تحقق النتائج. نجمع بين الإبداع والخبرة التقنية لتقديم حلول ويب
-                تتجاوز التوقعات.
-              </p>
-            </div>
+    <footer className="bg-[#0a0a0a] text-white">
 
-            {/* Quick Links */}
-            <div className="">
-              <h3 className="text-lg font-semibold mb-6">روابط سريعة</h3>
-              <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-white/70 hover:text-white transition-colors duration-200">
-                      {link.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">خدماتنا</h3>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(service.href)}
-                      className="text-white/70 hover:text-white transition-colors duration-200">
-                      {service.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">تواصل معنا</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-white flex-shrink-0" />
-                  <span className="text-white/70 hover:text-white">webschema@outlook.com</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-white flex-shrink-0" />
-                  <span className="text-white/70 hover:text-white"> 98909936 (965+)</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-white flex-shrink-0" />
-                  <span className="text-white/70 hover:text-white">الكويت</span>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <Button
-                  variant="custom"
-                  onClick={() => scrollToSection("#contact")}
-                  className="w-full sm:w-auto bg-white text-black hover:bg-white/80">
-                  ابدأ مشروعك
-                </Button>
-              </div>
-            </div>
+      {/* ── CTA strip ── */}
+      <div className="border-b border-white/8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-5">
+            <p className="text-white/55 text-sm">
+              جاهز لتحويل فكرتك إلى موقع احترافي؟
+            </p>
+            <button
+              onClick={() => scroll("#contact")}
+              className="group flex items-center gap-2 text-sm font-semibold text-white hover:text-white/80 transition-colors duration-200">
+              احصل على عرض سعر مجاني
+              <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Footer Bottom */}
-        <div className="border-t border-white/10 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2 text-text-on-primary/60">
-              <span>© {currentYear} webschema </span>
+      {/* ── Main columns ── */}
+      <motion.div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7, ease }}>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+
+          {/* Company */}
+          <div className="col-span-2 lg:col-span-1">
+            <div className="mb-5">
+              <span className="text-xl font-bold tracking-tight text-white">
+                webschema
+              </span>
             </div>
-            <div className="flex gap-6 text-sm text-text-on-primary/60">
-              <button className="text-white/70 hover:text-white transition-colors">
-                <Modal title={title1} body={body1}>
+            <p className="text-white/45 text-sm leading-relaxed mb-7 max-w-[220px]">
+              نبني مواقع استثنائية تحقق النتائج، بإبداع لا حدود له وخبرة تقنية متميزة.
+            </p>
+
+            {/* Social icons */}
+            <div className="flex gap-3">
+              {socials.map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-all duration-200">
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick links */}
+          <div>
+            <h4 className="text-white/35 text-[11px] font-semibold tracking-[0.16em] uppercase mb-5">
+              التنقل
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <button
+                    onClick={() => scroll(link.href)}
+                    className="text-white/55 hover:text-white text-sm transition-colors duration-200">
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-white/35 text-[11px] font-semibold tracking-[0.16em] uppercase mb-5">
+              خدماتنا
+            </h4>
+            <ul className="space-y-3">
+              {services.map((s) => (
+                <li key={s.label}>
+                  <button
+                    onClick={() => scroll("#services")}
+                    className="text-white/55 hover:text-white text-sm transition-colors duration-200">
+                    {s.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-white/35 text-[11px] font-semibold tracking-[0.16em] uppercase mb-5">
+              تواصل معنا
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="mailto:webschema@outlook.com"
+                  className="flex items-center gap-2.5 text-white/55 hover:text-white text-sm transition-colors duration-200 group">
+                  <Mail className="h-3.5 w-3.5 flex-shrink-0 opacity-60 group-hover:opacity-100" />
+                  webschema@outlook.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+96598909936"
+                  className="flex items-center gap-2.5 text-white/55 hover:text-white text-sm transition-colors duration-200 group">
+                  <Phone className="h-3.5 w-3.5 flex-shrink-0 opacity-60 group-hover:opacity-100" />
+                  98909936 (+965)
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5 text-white/55 text-sm">
+                <MapPin className="h-3.5 w-3.5 flex-shrink-0 opacity-60" />
+                الكويت
+              </li>
+            </ul>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-white/8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-5">
+
+            <p className="text-white/30 text-xs">
+              © {year} WebSchema. جميع الحقوق محفوظة.
+            </p>
+
+            <div className="flex items-center gap-5 text-xs text-white/30">
+              <Modal title={title1} body={body1}>
+                <span className="cursor-pointer hover:text-white/70 transition-colors duration-200">
                   سياسة الخصوصية
-                </Modal>
-              </button>
-              <button className="text-white/70 hover:text-white transition-colors">
-                <Modal title={title2} body={body2}>
+                </span>
+              </Modal>
+              <span className="w-px h-3 bg-white/15" />
+              <Modal title={title2} body={body2}>
+                <span className="cursor-pointer hover:text-white/70 transition-colors duration-200">
                   شروط الخدمة
-                </Modal>
-              </button>
+                </span>
+              </Modal>
             </div>
           </div>
         </div>
@@ -134,6 +184,8 @@ const Footer = () => {
     </footer>
   );
 };
+
+/* ── Legal copy ── */
 const title1 = "سياسة الخصوصية – ويب سكيما";
 const body1 = `
 نحن في ويب سكيما نحرص على خصوصية زوارنا وعملائنا ونلتزم بحماية البيانات الشخصية التي يتم جمعها واستخدامها عند زيارتك لموقعنا أو استخدام خدماتنا.
@@ -171,14 +223,13 @@ const body1 = `
 قد نقوم بتحديث هذه السياسة من وقت لآخر. سيتم نشر أي تعديلات على هذه الصفحة مع تاريخ آخر تحديث.
 
 8. التواصل معنا:
-📧 البريد الإلكتروني: info@webschema.com
-📞 الهاتف:  98909936 
+📧 البريد الإلكتروني: webschema@outlook.com
+📞 الهاتف: 98909936
 
 آخر تحديث: 4 أغسطس 2025
 `;
 
 const title2 = "شروط الخدمة – ويب سكيما";
-
 const body2 = `
 باستخدامك لموقع ويب سكيما أو أي من خدماتنا، فإنك توافق على الالتزام بالشروط والأحكام التالية. يرجى قراءتها بعناية.
 
