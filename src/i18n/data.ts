@@ -3,59 +3,89 @@
  * Localised strings for these records live in `content.ts`, keyed by `id`.
  */
 
-export type ProjectId = "terra" | "flowdesk" | "marketpulse" | "commerce" | "atelier" | "orangery";
+export type ProjectId =
+  | "hayam"
+  | "storefront"
+  | "aura"
+  | "quietLuxury"
+  | "elevate"
+  | "catalogue"
+  | "product"
+  | "auth"
+  | "dashboard";
 
 export interface Project {
   id: ProjectId;
   img: string;
   year: string;
   stack: string[];
-  /** Tailwind-safe accent used for the card glow */
+  /** Tailwind-safe accent used for the card glow — sampled from each shot */
   tint: string;
 }
 
 export const PROJECTS: Project[] = [
   {
-    id: "terra",
-    img: "/terra.png",
+    id: "hayam",
+    img: "/1.jpg",
     year: "2025",
     stack: ["React", "Next.js", "Node.js", "MongoDB"],
-    tint: "152 70% 42%",
+    tint: "0 62% 38%",
   },
   {
-    id: "flowdesk",
-    img: "/ecomm.png",
+    id: "storefront",
+    img: "/2.jpg",
+    year: "2026",
+    stack: ["React", "Next.js", "TypeScript"],
+    tint: "210 14% 46%",
+  },
+  {
+    id: "aura",
+    img: "/3.jpg",
+    year: "2026",
+    stack: ["React", "Next.js", "Motion"],
+    tint: "24 55% 44%",
+  },
+  {
+    id: "quietLuxury",
+    img: "/4.jpg",
+    year: "2026",
+    stack: ["React", "Next.js", "Motion"],
+    tint: "30 34% 56%",
+  },
+  {
+    id: "elevate",
+    img: "/5.jpg",
     year: "2025",
-    stack: ["React", "TypeScript", "Node.js", "SQL"],
-    tint: "28 90% 55%",
+    stack: ["React", "Node.js", "MongoDB", "i18n"],
+    tint: "14 56% 54%",
   },
   {
-    id: "marketpulse",
-    img: "/services.png",
-    year: "2024",
-    stack: ["React", "Python", "WebSocket", "SQL"],
-    tint: "220 85% 60%",
-  },
-  {
-    id: "commerce",
-    img: "/admin.png",
+    id: "catalogue",
+    img: "/6.jpg",
     year: "2025",
-    stack: ["React", "ASP.NET", "C#", "SQL Server"],
-    tint: "266 70% 62%",
+    stack: ["React", "TypeScript", "Node.js"],
+    tint: "150 58% 42%",
   },
   {
-    id: "atelier",
-    img: "/folio.jpeg",
-    year: "2024",
-    stack: ["React", "Motion", "Vite"],
-    tint: "0 0% 62%",
+    id: "product",
+    img: "/7.jpg",
+    year: "2025",
+    stack: ["React", "TypeScript", "Node.js"],
+    tint: "225 62% 42%",
   },
   {
-    id: "orangery",
-    img: "/blog.png",
-    year: "2024",
-    stack: ["Next.js", "MDX", "Vercel"],
-    tint: "88 55% 45%",
+    id: "auth",
+    img: "/8.jpg",
+    year: "2025",
+    stack: ["React", "Node.js", "JWT"],
+    tint: "270 52% 56%",
+  },
+  {
+    id: "dashboard",
+    img: "/9.png",
+    year: "2025",
+    stack: ["React", "Node.js", "MongoDB", "Recharts"],
+    tint: "5 74% 58%",
   },
 ];
 
@@ -112,7 +142,6 @@ export const CONTACT = {
   phoneHref: "tel:+96598909936",
   whatsapp: "96598909936",
   instagram: "https://instagram.com/webschema",
-  x: "https://x.com/webschema",
 } as const;
 
 export const SERVICE_IMAGES: Record<string, string> = {

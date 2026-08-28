@@ -45,7 +45,7 @@ export default function Approach() {
       <div ref={ref} style={{ height: `${stages.length * 100}vh` }} className="relative isolate">
         <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
           <div className="shell w-full">
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="grid items-center gap-6 sm:gap-10 lg:grid-cols-12 lg:gap-16">
               {/* Stage index rail */}
               <div className="lg:col-span-3">
                 <ol className="flex gap-6 lg:flex-col lg:gap-5">
@@ -120,9 +120,10 @@ export default function Approach() {
                 </AnimatePresence>
               </div>
 
-              {/* Motif */}
+              {/* Motif — capped by viewport height as well as width, so short
+                  windows shrink it rather than crop it */}
               <div className="lg:col-span-4">
-                <div className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-[380px]">
+                <div className="relative mx-auto aspect-square w-full max-w-[min(300px,32svh)] sm:max-w-[min(380px,38svh)] lg:max-w-[380px]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={stage.id}

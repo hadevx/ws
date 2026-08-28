@@ -7,7 +7,6 @@ import { Reveal } from "./primitives";
 
 const SOCIALS = [
   { label: "Instagram", href: CONTACT.instagram },
-  { label: "X", href: CONTACT.x },
   { label: "WhatsApp", href: `https://wa.me/${CONTACT.whatsapp}` },
 ];
 
@@ -27,8 +26,15 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <Reveal>
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground font-mono text-xs text-background">
-                  W
+                <span className="block h-9 w-9 overflow-hidden rounded-[11px] bg-black ring-1 ring-inset ring-white/10">
+                  <img
+                    src="/x.png"
+                    alt=""
+                    width={36}
+                    height={36}
+                    decoding="async"
+                    className="h-full w-full object-contain"
+                  />
                 </span>
                 <span className="text-lg font-semibold tracking-tight latin">Webschema</span>
               </div>

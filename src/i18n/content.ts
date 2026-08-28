@@ -142,35 +142,50 @@ export const en = {
     drag: "Drag or scroll",
     all: "Every project ships with performance, accessibility and analytics as requirements — not extras.",
     projects: {
-      terra: {
-        name: "Terra Botanics",
-        category: "E-commerce",
-        desc: "A plant retailer's storefront with rich product detail, live inventory and a checkout tuned for conversion.",
+      hayam: {
+        name: "Hayam",
+        category: "Brand storefront",
+        desc: "A boutique label's landing experience — an engraved crest on deep lacquer red, closer to a fashion house than a shop.",
       },
-      flowdesk: {
-        name: "Flowdesk",
-        category: "Web application",
-        desc: "A payment operations board where cross-functional teams track transactions from intake through review.",
+      storefront: {
+        name: "Redefine Your Style",
+        category: "Storefront · Home",
+        desc: "The seasonal homepage for a Spring/Summer drop: full-bleed campaign photography with the collection one tap away.",
       },
-      marketpulse: {
-        name: "MarketPulse",
-        category: "Fintech dashboard",
-        desc: "A market intelligence dashboard streaming live prices, watchlists and global indices at a glance.",
+      aura: {
+        name: "Aura Jacket",
+        category: "Product launch",
+        desc: "A single-product launch page where the spec list sits inside the artwork rather than underneath it.",
       },
-      commerce: {
-        name: "Commerce Admin",
-        category: "Internal platform",
-        desc: "A bilingual back office for orders, catalogue, customers and delivery — built for daily operators.",
+      quietLuxury: {
+        name: "Quiet Luxury",
+        category: "Seasonal campaign",
+        desc: "An Autumn/Winter campaign on a split canvas — a vertical season marker holding one side, editorial photography carrying the other.",
       },
-      atelier: {
-        name: "Atelier Portfolio",
-        category: "Portfolio",
-        desc: "A quiet, typography-led personal site where the work carries the page and motion stays out of the way.",
+      elevate: {
+        name: "Elevate",
+        category: "Commerce platform",
+        desc: "A bilingual Kuwait storefront with language switching, an admin entry point, and delivery and offers surfaced right under the fold.",
       },
-      orangery: {
-        name: "Orangery Ventures",
-        category: "Editorial",
-        desc: "An investment firm's site pairing a full-bleed art direction with a clear, readable thesis.",
+      catalogue: {
+        name: "Catalogue & filters",
+        category: "Browse experience",
+        desc: "Twenty-two products filtered by colour, stock, sort and price in KD — with stock state and size pickers on the tile itself.",
+      },
+      product: {
+        name: "Product page",
+        category: "Conversion",
+        desc: "A detail view with gallery thumbnails, colour and size variants, live stock limits and one clear path to the bag.",
+      },
+      auth: {
+        name: "Account access",
+        category: "UI/UX",
+        desc: "A split login screen that keeps the campaign imagery working while the form itself stays quiet and legible.",
+      },
+      dashboard: {
+        name: "Analytics dashboard",
+        category: "Admin platform",
+        desc: "The Arabic-first back office: users, orders and revenue in KD, with switchable chart types and a breakdown by governorate.",
       },
     } as Record<ProjectId, { name: string; category: string; desc: string }>,
   },
@@ -444,35 +459,50 @@ export const ar: Dict = {
     drag: "اسحب أو مرّر",
     all: "كل مشروع يُسلَّم والأداء وسهولة الوصول والتحليلات ضمن المتطلبات — لا كإضافات.",
     projects: {
-      terra: {
-        name: "تيرا بوتانيكس",
-        category: "متجر إلكتروني",
-        desc: "متجر لبيع النباتات بتفاصيل منتج غنية ومخزون لحظي وسلة شراء مهيّأة لرفع التحويل.",
+      hayam: {
+        name: "هيام",
+        category: "متجر علامة تجارية",
+        desc: "واجهة هبوط لعلامة أزياء راقية — شعار محفور على أحمر عميق، أقرب إلى دار أزياء منه إلى متجر.",
       },
-      flowdesk: {
-        name: "فلوديسك",
-        category: "تطبيق ويب",
-        desc: "لوحة لعمليات المدفوعات تتابع فيها الفرق المعاملات من الاستلام حتى المراجعة.",
+      storefront: {
+        name: "Redefine Your Style",
+        category: "متجر · الصفحة الرئيسية",
+        desc: "الصفحة الرئيسية لموسم الربيع/الصيف: تصوير إعلاني يملأ الشاشة والمجموعة على بُعد نقرة واحدة.",
       },
-      marketpulse: {
-        name: "ماركت بَلس",
-        category: "لوحة بيانات مالية",
-        desc: "لوحة معلومات سوقية تعرض الأسعار اللحظية وقوائم المتابعة والمؤشرات العالمية في نظرة واحدة.",
+      aura: {
+        name: "جاكيت أورا",
+        category: "إطلاق منتج",
+        desc: "صفحة إطلاق لمنتج واحد، وُضعت فيها مواصفات المنتج داخل الصورة بدلاً من أسفلها.",
       },
-      commerce: {
-        name: "لوحة تحكم المتجر",
-        category: "منصة داخلية",
-        desc: "نظام إدارة ثنائي اللغة للطلبات والمنتجات والعملاء والتوصيل — مبني لمن يستخدمه يومياً.",
+      quietLuxury: {
+        name: "Quiet Luxury",
+        category: "حملة موسمية",
+        desc: "حملة الخريف/الشتاء على مساحة مقسومة — علامة الموسم عمودية على جانب، والتصوير التحريري يحمل الجانب الآخر.",
       },
-      atelier: {
-        name: "أتيليه — موقع شخصي",
-        category: "موقع شخصي",
-        desc: "موقع هادئ تقوده الطباعة، تتصدّر فيه الأعمال الصفحة وتبقى الحركة في الخلفية.",
+      elevate: {
+        name: "Elevate",
+        category: "منصة تجارة إلكترونية",
+        desc: "متجر كويتي ثنائي اللغة مع تبديل اللغة ومدخل للوحة التحكم، والتوصيل والعروض ظاهرة مباشرة أسفل الواجهة.",
       },
-      orangery: {
-        name: "أورانجري فينتشرز",
-        category: "موقع تحريري",
-        desc: "موقع لشركة استثمارية يجمع بين إدارة فنية كاملة الاتساع ورؤية واضحة سهلة القراءة.",
+      catalogue: {
+        name: "الكتالوج والفلاتر",
+        category: "تجربة التصفح",
+        desc: "٢٢ منتجاً مع فلترة حسب اللون والتوفّر والترتيب والسعر بالدينار — وحالة المخزون واختيار المقاس على البطاقة نفسها.",
+      },
+      product: {
+        name: "صفحة المنتج",
+        category: "رفع التحويل",
+        desc: "صفحة تفاصيل بصور مصغّرة وخيارات لون ومقاس وحدود مخزون لحظية ومسار واحد واضح إلى السلة.",
+      },
+      auth: {
+        name: "الدخول إلى الحساب",
+        category: "واجهات وتجربة",
+        desc: "شاشة دخول مقسومة تُبقي صور الحملة تعمل بينما يبقى النموذج هادئاً وواضح القراءة.",
+      },
+      dashboard: {
+        name: "لوحة الإحصائيات",
+        category: "منصة إدارة",
+        desc: "لوحة تحكم عربية أولاً: المستخدمون والطلبات والإيرادات بالدينار، مع أنواع رسوم قابلة للتبديل وتوزيع حسب المحافظة.",
       },
     } as Record<ProjectId, { name: string; category: string; desc: string }>,
   },

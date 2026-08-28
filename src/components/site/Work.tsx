@@ -46,11 +46,16 @@ function ProjectCard({
     <article
       className={cn(
         "group relative flex flex-col",
-        horizontal ? "w-[min(70vw,700px)] shrink-0" : "w-full",
+        // In the pinned gallery the card is height-driven: it fills whatever the
+        // viewport leaves, so short windows crop the shot instead of clipping it.
+        horizontal ? "h-full w-[min(70vw,700px)] shrink-0" : "w-full",
       )}
     >
       <div
-        className="relative overflow-hidden rounded-2xl border border-line bg-surface"
+        className={cn(
+          "relative overflow-hidden rounded-2xl border border-line bg-surface",
+          horizontal && "min-h-0 flex-1",
+        )}
         data-cursor-text={view}
         style={{ ["--tint" as string]: tint }}
       >
@@ -62,7 +67,7 @@ function ProjectCard({
             background: `radial-gradient(120% 80% at 50% 110%, hsl(${tint} / 0.35), transparent 70%)`,
           }}
         />
-        <div className="aspect-[16/10] overflow-hidden">
+        <div className={cn("overflow-hidden", horizontal ? "h-full" : "aspect-[16/10]")}>
           <img
             src={img}
             alt={name}
@@ -80,14 +85,27 @@ function ProjectCard({
       </div>
 
       {/* Meta */}
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div
+        className={cn(
+          "flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between",
+          horizontal ? "mt-5 shrink-0" : "mt-6",
+        )}
+      >
         <div className="max-w-[46ch]">
           <div className="flex items-baseline gap-3">
             <h3 className="display text-[clamp(1.3rem,2.4vw,2rem)] leading-tight">{name}</h3>
             <span className="label latin">{year}</span>
           </div>
           <p className="mt-1 text-sm text-signal">{category}</p>
-          <p className="mt-3 text-sm leading-relaxed text-text-secondary">{desc}</p>
+          {/* The blurb is the first thing to go when the window is short */}
+          <p
+            className={cn(
+              "mt-3 text-sm leading-relaxed text-text-secondary",
+              horizontal && "hidden [@media(min-height:800px)]:block",
+            )}
+          >
+            {desc}
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-2 sm:justify-end">
@@ -115,7 +133,11 @@ function HorizontalTrack({
   children: React.ReactNode;
 }) {
   return (
-    <motion.div ref={trackRef} style={{ x }} className="flex gap-8 gpu will-change-transform">
+    <motion.div
+      ref={trackRef}
+      style={{ x }}
+      className="flex h-full gap-8 gpu will-change-transform"
+    >
       {children}
     </motion.div>
   );
@@ -213,9 +235,9 @@ export default function Work() {
       className="relative"
       style={{ height: `${PROJECTS.length * 78 + 60}vh` }}
     >
-      <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden">
         {/* Compact header: the pinned viewport has to fit header + card + meta */}
-        <div className="shell shrink-0 pb-8 pt-24">
+        <div className="shell shrink-0 pb-6 pt-20 [@media(min-height:800px)]:pb-8 [@media(min-height:800px)]:pt-24">
           <div className="flex items-end justify-between gap-12">
             <div className="flex flex-col gap-3">
               <Reveal>
@@ -241,7 +263,8 @@ export default function Work() {
           </div>
         </div>
 
-        <div className="ps-[4vw]">
+        {/* Takes the leftover height and hands it to the cards */}
+        <div className="min-h-0 flex-1 ps-[4vw]">
           <HorizontalTrack x={x} trackRef={trackRef}>
             {PROJECTS.map((p, i) => {
               const copy = t.work.projects[p.id];
@@ -269,7 +292,7 @@ export default function Work() {
         </div>
 
         {/* Track progress */}
-        <div className="shell mt-10 shrink-0">
+        <div className="shell shrink-0 py-6 [@media(min-height:800px)]:py-8">
           <div className="h-px w-full bg-line">
             <motion.div
               className="h-px bg-signal"

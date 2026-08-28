@@ -82,16 +82,19 @@ export default function Nav() {
             aria-label="Webschema"
             data-cursor="hover"
           >
-            <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-foreground">
-              <span className="font-mono text-[11px] font-medium leading-none text-background">
-                W
-              </span>
-              <span className="absolute inset-0 origin-bottom scale-y-0 bg-signal transition-transform duration-500 ease-brand group-hover:scale-y-100" />
-              <span className="absolute font-mono text-[11px] font-medium leading-none text-background opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                W
-              </span>
+            {/* The mark ships with a black plate baked in, so it sits on its own
+                tile rather than trying to blend into either theme. */}
+            <span className="relative block h-8 w-8 overflow-hidden rounded-[10px] bg-black ring-1 ring-inset ring-white/10 transition-all duration-500 ease-brand group-hover:ring-signal">
+              <img
+                src="/x.png"
+                alt=""
+                width={32}
+                height={32}
+                decoding="async"
+                className="h-full w-full object-contain transition-transform duration-500 ease-brand group-hover:scale-110"
+              />
             </span>
-            <span className="hidden text-[15px] font-semibold tracking-tight latin sm:block">
+            <span className="latin block text-[14px] font-semibold tracking-tight sm:text-[15px]">
               Webschema
             </span>
           </button>
