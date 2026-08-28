@@ -1,31 +1,54 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ويب سكيما - تطوير المواقع الإلكترونية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B0B0D" />
+
+    <title>ويب سكيما — Webschema · Digital Product Studio</title>
     <meta
       name="description"
-      content="نبني مواقع استثنائية - فريق ويب سكيما المتخصص في تطوير المواقع الإلكترونية" />
-    <meta name="author" content="ويب سكيما" />
+      content="ويب سكيما — استوديو رقمي نبني فيه تجارب تدفع الأعمال إلى الأمام. تصميم، هندسة، واستراتيجية. Webschema builds digital experiences that move businesses forward." />
+    <meta name="author" content="Webschema" />
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/x.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@300;400;500;700;800;900&display=swap"
       rel="stylesheet" />
 
-    <meta property="og:title" content="ويب سكيما - تطوير المواقع الإلكترونية" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="Webschema — Digital Product Studio" />
+    <meta
+      property="og:description"
+      content="We build digital experiences that move businesses forward." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="/x.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:image" content="/x.png" />
   </head>
 
   <body>
     <div id="root"></div>
+    <!-- Apply stored theme + language before first paint to avoid a flash. -->
+    <script>
+      (function () {
+        try {
+          // Beat Chrome's scroll restoration: this page is scroll-animated and
+          // must always start at the top.
+          if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+          var t = localStorage.getItem("theme");
+          document.documentElement.classList.toggle("dark", t !== "light");
+          var l = localStorage.getItem("ws-lang");
+          if (l === "en") {
+            document.documentElement.lang = "en";
+            document.documentElement.dir = "ltr";
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

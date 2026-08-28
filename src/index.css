@@ -2,169 +2,420 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ==========================================================================
+   WEBSCHEMA — DESIGN SYSTEM
+   Dark-first, editorial, technical. All colors are HSL triplets.
+   ========================================================================== */
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 215 25% 27%;
+    /* ---- Paper (light) ---------------------------------------------- */
+    --background: 40 14% 97%;
+    --foreground: 225 14% 8%;
 
-    --card: 220 20% 99%;
-    --card-foreground: 215 25% 27%;
+    --surface: 40 12% 94%;
+    --surface-elevated: 0 0% 100%;
+    --surface-muted: 40 10% 92%;
 
+    --card: 0 0% 100%;
+    --card-foreground: 225 14% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 225 14% 8%;
 
-    --primary: 220 13% 18%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 225 14% 8%;
+    --primary-foreground: 40 14% 97%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 225 14% 8%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 225 6% 42%;
+    --accent: 40 10% 92%;
+    --accent-foreground: 225 14% 8%;
+    --destructive: 4 74% 48%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220 13% 18%;
+    --border: 225 8% 87%;
+    --input: 225 8% 84%;
+    --ring: 152 62% 34%;
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+    /* ---- Brand ------------------------------------------------------- */
+    --brand-primary: 225 14% 8%;
+    --brand-secondary: 152 62% 34%; /* signal green */
+    --brand-accent: 40 92% 50%; /* amber highlight */
+    --signal: 152 62% 34%;
+    --signal-soft: 152 62% 34%;
 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220 13% 18%;
+    --text-primary: 225 14% 8%;
+    --text-secondary: 225 6% 42%;
+    --text-tertiary: 225 5% 58%;
+    --text-on-primary: 40 14% 97%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --line: 225 8% 87%;
+    --line-soft: 225 8% 91%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 13% 18%;
+    --radius: 0.5rem;
 
-    /* WebSchema Design System - Simplified */
-    --brand-primary: 220 13% 18%;
-    --brand-secondary: 142 71% 45%;
-    --brand-accent: 47 96% 53%;
-    --brand-gradient: linear-gradient(135deg, hsl(220 13% 18%), hsl(142 71% 45%));
-    --brand-gradient-subtle: linear-gradient(
-      135deg,
-      hsl(220 13% 18% / 0.1),
-      hsl(142 71% 45% / 0.1)
-    );
+    /* ---- Motion ------------------------------------------------------ */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+    --ease-brand: cubic-bezier(0.32, 0.72, 0, 1);
 
-    --surface-elevated: 220 20% 99%;
-    --surface-muted: 220 14.3% 95.9%;
-    --text-primary: 220 13% 18%;
-    --text-secondary: 220 8.9% 46.1%;
-    --text-on-primary: 0 0% 98%;
-
-    --shadow-sm: 0 1px 2px hsl(226 71% 40% / 0.05);
-    --shadow-md: 0 4px 6px hsl(226 71% 40% / 0.07);
-    --shadow-lg: 0 10px 15px hsl(226 71% 40% / 0.1);
-    --shadow-xl: 0 20px 25px hsl(226 71% 40% / 0.1);
-
-    --transition-fast: all 0.15s ease;
-    --transition-normal: all 0.2s ease;
-    --transition-slow: all 0.3s ease;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 14% 97%;
+    --sidebar-foreground: 225 6% 30%;
+    --sidebar-primary: 225 14% 8%;
+    --sidebar-primary-foreground: 40 14% 97%;
+    --sidebar-accent: 40 10% 92%;
+    --sidebar-accent-foreground: 225 14% 8%;
+    --sidebar-border: 225 8% 87%;
+    --sidebar-ring: 152 62% 34%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* ---- Ink (dark) -------------------------------------------------- */
+    --background: 240 8% 4%;
+    --foreground: 40 12% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --surface: 240 7% 7%;
+    --surface-elevated: 240 7% 9%;
+    --surface-muted: 240 6% 11%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --card: 240 7% 7%;
+    --card-foreground: 40 12% 96%;
+    --popover: 240 7% 8%;
+    --popover-foreground: 40 12% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 40 12% 96%;
+    --primary-foreground: 240 8% 4%;
+    --secondary: 240 6% 12%;
+    --secondary-foreground: 40 12% 96%;
+    --muted: 240 6% 12%;
+    --muted-foreground: 240 5% 58%;
+    --accent: 240 6% 12%;
+    --accent-foreground: 40 12% 96%;
+    --destructive: 4 74% 52%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --border: 240 6% 15%;
+    --input: 240 6% 18%;
+    --ring: 152 78% 48%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --brand-primary: 40 12% 96%;
+    --brand-secondary: 152 78% 48%;
+    --brand-accent: 44 96% 58%;
+    --signal: 152 78% 48%;
+    --signal-soft: 152 60% 62%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --text-primary: 40 12% 96%;
+    --text-secondary: 240 5% 58%;
+    --text-tertiary: 240 5% 40%;
+    --text-on-primary: 240 8% 4%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --line: 240 6% 15%;
+    --line-soft: 240 6% 11%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-
-    --brand-primary: 210 40% 98%;
-    --brand-secondary: 142 71% 55%;
-    --surface-elevated: 222.2 84% 7%;
-    --surface-muted: 217.2 32.6% 15%;
-    --text-primary: 210 40% 98%;
-    --text-secondary: 215 20.2% 65.1%;
-    --text-on-primary: 0 0% 98%;
-  }
-  .theme {
-    --animate-shine: shine var(--duration) infinite linear;
+    --sidebar-background: 240 7% 7%;
+    --sidebar-foreground: 240 5% 70%;
+    --sidebar-primary: 40 12% 96%;
+    --sidebar-primary-foreground: 240 8% 4%;
+    --sidebar-accent: 240 6% 12%;
+    --sidebar-accent-foreground: 40 12% 96%;
+    --sidebar-border: 240 6% 15%;
+    --sidebar-ring: 152 78% 48%;
   }
 }
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
 
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis owns scrolling */
+    /* Non-static so scroll-linked offsets measure against a positioned root. */
+    position: relative;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    font-family: "Cairo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    direction: rtl;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Tajawal", "Cairo", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "kern" 1;
+    overflow-x: clip;
+  }
+
+  html[dir="ltr"] body {
+    font-family: "Inter Tight", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-feature-settings: "kern" 1, "ss01" 1, "cv11" 1;
+  }
+
+  /* Latin fragments inside Arabic copy keep the Latin grotesk and, critically,
+     their own LTR run — otherwise bidi reorders things like "C#" into "#C". */
+  html[dir="rtl"] .latin,
+  html[dir="rtl"] .font-mono {
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .latin {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  ::selection {
+    background: hsl(var(--signal) / 0.28);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--signal));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Custom cursor takes over on precise, large-screen pointers only.
+     Text controls keep their native cursor so editing stays usable. */
+  @media (pointer: fine) and (min-width: 1024px) {
+    html.has-custom-cursor,
+    html.has-custom-cursor * {
+      cursor: none;
+    }
+    html.has-custom-cursor input,
+    html.has-custom-cursor textarea,
+    html.has-custom-cursor select,
+    html.has-custom-cursor [contenteditable="true"] {
+      cursor: auto;
+    }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--line));
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--text-tertiary));
   }
 }
 
-/* ---break---
-*/
+/* ==========================================================================
+   LENIS
+   ========================================================================== */
 
-@theme inline {
-  @keyframes shine {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+@layer components {
+  /* Small technical label — mono, wide tracking, uppercase for Latin */
+  .label {
+    @apply font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-text-tertiary;
+  }
+
+  html[dir="rtl"] .label:not(.latin) {
+    @apply tracking-[0.12em] normal-case text-[11px] sm:text-xs;
+    font-family: "Tajawal", sans-serif;
+  }
+
+  /* Editorial display scale — fluid, tight, heavy */
+  .display {
+    @apply font-semibold tracking-[-0.035em];
+    line-height: 0.94;
+  }
+
+  html[dir="rtl"] .display {
+    @apply font-extrabold tracking-normal;
+    line-height: 1.18;
+  }
+
+  .display-xl {
+    font-size: clamp(2.75rem, 9.2vw, 10.5rem);
+  }
+  .display-lg {
+    font-size: clamp(2.25rem, 6.4vw, 6.5rem);
+  }
+  .display-md {
+    font-size: clamp(1.75rem, 4.2vw, 4rem);
+  }
+
+  html[dir="rtl"] .display-xl {
+    font-size: clamp(2.25rem, 7.4vw, 8rem);
+  }
+  html[dir="rtl"] .display-lg {
+    font-size: clamp(1.9rem, 5.4vw, 5.25rem);
+  }
+  html[dir="rtl"] .display-md {
+    font-size: clamp(1.6rem, 3.8vw, 3.4rem);
+  }
+
+  .lead {
+    @apply text-text-secondary;
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    line-height: 1.6;
+  }
+  html[dir="rtl"] .lead {
+    line-height: 1.9;
+  }
+
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-[1560px] px-5 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .section {
+    @apply py-24 sm:py-32 lg:py-40;
+  }
+}
+
+/* ==========================================================================
+   TEXTURE + EFFECTS
+   ========================================================================== */
+
+@layer utilities {
+  /* Fine film grain, GPU-cheap (single repeating SVG) */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .grid-lines {
+    background-image: linear-gradient(to right, hsl(var(--line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--line)) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Logical-direction arrow: points "forward" in either script */
+  html[dir="rtl"] .arrow-fwd {
+    transform: scaleX(-1);
+  }
+}
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes ws-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
   to {
-    background-position: 0% 0%;
-    }
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-@keyframes grid-scroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 60px; }
+@keyframes ws-marquee-rtl {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(50%, 0, 0);
+  }
 }
 
-.hero-grid {
-  animation: grid-scroll 6s linear infinite;
+@keyframes ws-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ws-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes ws-sheen {
+  0% {
+    background-position: -140% 0;
+  }
+  100% {
+    background-position: 240% 0;
+  }
+}
+
+@keyframes ws-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0.15;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

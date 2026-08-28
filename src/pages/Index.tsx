@@ -1,44 +1,71 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Services from "@/components/Services";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Carousel from "../components/Carousel";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import FloatingCTA from "@/components/FloatingCTA";
-import Preloader from "@/components/Preloader";
-import { useEffect, useState } from "react";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import { AnimatePresence } from "motion/react";
+import { useCallback, useEffect, useState } from "react";
+
+import About from "@/components/site/About";
+import Approach from "@/components/site/Approach";
+import CallToAction from "@/components/site/CallToAction";
+import Contact from "@/components/site/Contact";
+import Cursor from "@/components/site/Cursor";
+import Footer from "@/components/site/Footer";
+import Hero from "@/components/site/Hero";
+import Nav from "@/components/site/Nav";
+import Preloader from "@/components/site/Preloader";
+import ScrollProgress from "@/components/site/ScrollProgress";
+import Services from "@/components/site/Services";
+import Tech from "@/components/site/Tech";
+import Work from "@/components/site/Work";
+
+const SEEN_KEY = "ws-intro-seen";
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
+  // The intro plays once per browser session, not on every soft navigation.
+  const [loading, setLoading] = useState(
+    () => typeof window !== "undefined" && !sessionStorage.getItem(SEEN_KEY),
+  );
 
+  useSmoothScroll(!loading);
+
+  // Scroll-linked sections don't survive a restored scroll position, so start
+  // every load at the top instead of letting the browser guess.
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   }, []);
+
+  const finish = useCallback(() => {
+    sessionStorage.setItem(SEEN_KEY, "1");
+    setLoading(false);
+  }, []);
+
+  // Hold the page still behind the intro.
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    if (loading) window.scrollTo(0, 0);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loading]);
 
   return (
     <>
-      {loading ? (
-        <Preloader />
-      ) : (
-        <div className="min-h-screen">
-          <ScrollProgress />
-          <FloatingCTA />
-          <Navigation />
-          <main>
-            <Hero />
-            <Features />
-            <Carousel />
-            <Services />
-            <Testimonials />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      )}
+      <AnimatePresence>{loading && <Preloader key="intro" onDone={finish} />}</AnimatePresence>
+
+      <Cursor />
+      <ScrollProgress />
+      <Nav />
+
+      <main>
+        <Hero />
+        <Services />
+        <Approach />
+        <Work />
+        <Tech />
+        <About />
+        <CallToAction />
+        <Contact />
+      </main>
+
+      <Footer />
     </>
   );
 };

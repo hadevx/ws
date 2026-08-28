@@ -20,7 +20,25 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter Tight", "Tajawal", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Inter Tight", "Tajawal", "ui-sans-serif", "sans-serif"],
+        arabic: ["Tajawal", "Cairo", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
+      transitionTimingFunction: {
+        brand: "cubic-bezier(0.32, 0.72, 0, 1)",
+        expo: "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
       colors: {
+        line: {
+          DEFAULT: "hsl(var(--line))",
+          soft: "hsl(var(--line-soft))",
+        },
+        signal: {
+          DEFAULT: "hsl(var(--signal))",
+          soft: "hsl(var(--signal-soft))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -60,12 +78,14 @@ export default {
           accent: "hsl(var(--brand-accent))",
         },
         surface: {
+          DEFAULT: "hsl(var(--surface))",
           elevated: "hsl(var(--surface-elevated))",
           muted: "hsl(var(--surface-muted))",
         },
         text: {
           primary: "hsl(var(--text-primary))",
           secondary: "hsl(var(--text-secondary))",
+          tertiary: "hsl(var(--text-tertiary))",
           "on-primary": "hsl(var(--text-on-primary))",
         },
         sidebar: {

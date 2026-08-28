@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 type Theme = "light" | "dark";
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const stored = localStorage.getItem("theme") as Theme | null;
   if (stored) return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  // Webschema is a dark-first identity; light is opt-in.
+  return "dark";
 }
 
 export function useTheme() {
