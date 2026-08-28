@@ -5,7 +5,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
-  //testt
   <LanguageProvider>
     <BrowserRouter>
       <Routes>
