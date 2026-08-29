@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="en" dir="ltr" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -42,9 +42,9 @@
           var t = localStorage.getItem("theme");
           document.documentElement.classList.toggle("dark", t !== "light");
           var l = localStorage.getItem("ws-lang");
-          if (l === "en") {
-            document.documentElement.lang = "en";
-            document.documentElement.dir = "ltr";
+          if (l === "ar") {
+            document.documentElement.lang = "ar";
+            document.documentElement.dir = "rtl";
           }
         } catch (e) {}
       })();

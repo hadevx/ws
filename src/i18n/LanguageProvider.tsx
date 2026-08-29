@@ -18,12 +18,11 @@ const LanguageContext = createContext<LanguageValue | null>(null);
 const STORAGE_KEY = "ws-lang";
 
 function readInitialLang(): Lang {
-  if (typeof window === "undefined") return "ar";
+  if (typeof window === "undefined") return "en";
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === "ar" || stored === "en") return stored;
-  // Default to Arabic unless the browser clearly prefers a non-Arabic locale.
-  const nav = window.navigator.language?.toLowerCase() ?? "ar";
-  return nav.startsWith("ar") ? "ar" : "ar";
+  // English is the default; Arabic is a deliberate choice the visitor makes.
+  return "en";
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
