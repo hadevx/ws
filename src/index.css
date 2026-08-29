@@ -333,6 +333,17 @@ html.lenis body {
     will-change: transform;
   }
 
+  /* Marquee track — the keyframe has to follow the writing direction, because
+     an RTL flex row overflows to the left and must travel right to reveal it.
+     Kept in CSS (not an inline style) so `dir` alone decides. */
+  .marquee-track {
+    animation: ws-marquee var(--marquee-duration, 40s) linear infinite;
+  }
+
+  html[dir="rtl"] .marquee-track {
+    animation-name: ws-marquee-rtl;
+  }
+
   /* Logical-direction arrow: points "forward" in either script */
   html[dir="rtl"] .arrow-fwd {
     transform: scaleX(-1);

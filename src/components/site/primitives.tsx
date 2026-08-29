@@ -399,20 +399,28 @@ export function Marquee({
   className?: string;
   pauseOnHover?: boolean;
 }) {
+  // One copy has to be at least as wide as the strip, otherwise the hand-off at
+  // the halfway point exposes bare track. The viewport is the widest the strip
+  // can be, so it is a safe floor; when the content already exceeds it the
+  // min-width and the distribution are both inert.
+  const copy = "flex min-w-[100vw] shrink-0 items-center justify-around";
+
   return (
     <div className={cn("group/marquee relative flex overflow-hidden", className)}>
       <div
         className={cn(
-          "flex w-max shrink-0 items-center gpu",
+          "marquee-track flex w-max shrink-0 items-center gpu",
           pauseOnHover && "group-hover/marquee:[animation-play-state:paused]",
         )}
         style={{
-          animation: `ws-marquee ${speed}s linear infinite`,
+          ["--marquee-duration" as string]: `${speed}s`,
           animationDirection: reverse ? "reverse" : "normal",
         }}
       >
-        {children}
-        {children}
+        <div className={copy}>{children}</div>
+        <div className={copy} aria-hidden>
+          {children}
+        </div>
       </div>
     </div>
   );
